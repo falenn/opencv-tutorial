@@ -46,7 +46,7 @@ def stackImages(scale,imgArray,lables=[]):
 def drawBoundingBox(img,shape):
     b = shape.getBoundingBox()
     cv2.rectangle(img,(b.x,b.y),(b.width(),b.height()),(0,255,0),2)
-    cv2.putText(img,shape.type,(b.x+(b.w//2)-10,b.y+(b.h//2)-10),cv2)
+    cv2.putText(img,shape.type,(b.x+(b.w//2)-10,b.y+(b.h//2)-10),cv2.FONT_HERSHEY_COMPLEX,0.5,(0,255,255),2)
     return img
 
 
