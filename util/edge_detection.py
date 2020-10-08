@@ -26,7 +26,7 @@ def detectShape(contour):
 
         # bounding box around the approx
         x,y,w,h = cv2.boundingRect(approx)
-        shape.boundingBox = [x,y,w,h]
+        shape.setBoundingBox(x,y,w,h)
         # from the bounding box, we can get center-point, max width, height
 
         if objCor ==3:objectType = "Tri"

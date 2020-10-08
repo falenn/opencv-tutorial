@@ -5,12 +5,15 @@
 import cv2
 import numpy as np
 from util.display import stackImages
+from util.display import drawBoundingBox
 from util.edge_detection import getContours
 from util.edge_detection import detectShape
 from model.shape import Shape
 
 path = 'resources/shapes.png'
 img = cv2.imread(path)
+# create a copy for drawing bounding boxes on top of later on
+imgContour = img.copy()
 
 # convert to grayscale
 imgGray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
@@ -34,7 +37,5 @@ for cnt in contours:
   shapes.append(shape)
   print(f"shape: {shape.toString()}")
 
-
-
-
-
+  # draw the bounding boxes over the shapes
+  drawBoundingBox(imgContour,shape)

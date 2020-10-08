@@ -2,6 +2,8 @@
 
 import cv2
 import numpy as np
+import model.shape as Shape
+import model.boundingbox as BoundingBox
 
 def stackImages(scale,imgArray,lables=[]):
     sizeW = imgArray[0][0].shape[1]
@@ -40,4 +42,11 @@ def stackImages(scale,imgArray,lables=[]):
                 cv2.rectangle(ver,(c*eachImgWidth,eachImgHeight*d),(c*eachImgWidth+len(lables[d][c])*13+27,30+eachImgHeight*d),(255,255,255),cv2.FILLED)
                 cv2.putText(ver,lables[d][c],(eachImgWidth*c+10,eachImgHeight*d+20),cv2.FONT_HERSHEY_COMPLEX,0.7,(255,0,255),2)
     return ver
+
+def drawBoundingBox(img,shape):
+    b = shape.getBoundingBox()
+    cv2.rectangle(img,(b.x,b.y),(b.width(),b.height()),(0,255,0),2)
+    cv2.putText(img,shape.type,(b.x+(b.w//2)-10,b.y+(b.h//2)-10),cv2)
+    return img
+
 
